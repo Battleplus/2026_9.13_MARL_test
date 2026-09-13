@@ -1,0 +1,6 @@
+# Fast, CPU/GPU-compatible dependencies for the synthetic reward-model gate.
+absl-py==1.4.0
+ml-collections==0.1.1
+numpy==1.26.4
+torch==2.4.1
+transformers==4.45.2

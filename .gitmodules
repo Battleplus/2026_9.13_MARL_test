@@ -1,0 +1,3 @@
+[submodule "upstream/MAPT"]
+	path = upstream/MAPT
+	url = https://github.com/catezi/MAPT.git

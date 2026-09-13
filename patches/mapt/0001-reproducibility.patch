@@ -1,0 +1,31 @@
+Subject: [PATCH] fix MAPT dependency name and policy import path
+
+Apply from the root of upstream MAPT pinned at
+0b4ef2712995681febca7631f9a27e1b0dccccbf. The repository keeps the upstream
+checkout as a submodule; this patch is the auditable upstream change boundary.
+
+diff --git a/requirments.txt b/requirements.txt
+similarity index 98%
+rename from requirments.txt
+rename to requirements.txt
+--- a/requirments.txt
++++ b/requirements.txt
+@@ -74,7 +74,6 @@ shortuuid==1.0.8
+ sk-video==1.1.10
+ sklearn==0.0
+ smmap==5.0.0
+-some-package==0.1
+ tabulate==0.8.9
+ tb-nightly==2.9.0a20220309
+ tensorboard-plugin-wit==1.6.0
+diff --git a/mat/scripts/train_policy/train_smac.py b/mat/scripts/train_policy/train_smac.py
+--- a/mat/scripts/train_policy/train_smac.py
++++ b/mat/scripts/train_policy/train_smac.py
+@@ -8,4 +8,6 @@
+ from pathlib import Path
+ import torch
+-sys.path.append("../../")
++REPO_ROOT = Path(__file__).resolve().parents[3]
++if str(REPO_ROOT) not in sys.path:
++    sys.path.insert(0, str(REPO_ROOT))
+ from mat.config import get_config

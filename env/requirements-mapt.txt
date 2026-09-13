@@ -1,0 +1,14 @@
+# Runtime dependencies needed by the MAPT reward/policy code on Linux.
+# PyTorch is locked by env/mapt-linux-lock.yml because the CUDA wheel matters.
+absl-py==1.4.0
+cloudpickle==2.0.0
+gym==0.12.4
+matplotlib==3.5.1
+ml-collections==0.1.1
+numpy==1.23.5
+PySC2==3.0.0
+setproctitle==1.2.2
+tensorboardX==2.5
+transformers==4.24.0
+tqdm==4.64.0
+wandb==0.12.11

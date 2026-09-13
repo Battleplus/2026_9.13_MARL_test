@@ -1,0 +1,13 @@
+name: mapt-reproduction
+channels:
+  - pytorch
+  - nvidia
+  - conda-forge
+dependencies:
+  - python=3.8.18
+  - pytorch=1.10.2
+  - torchvision=0.11.3
+  - cudatoolkit=11.3
+  - pip=23.3.2
+  - pip:
+      - -r requirements-mapt.txt
