@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+
+# Editors and OS
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Experiment artifacts
+*.pt
+*.pth
+*.ckpt
+*.pkl
+*.npz
+*.npy
+*.h5
+*.hdf5
+*.mp4
+wandb/
+tensorboard/
+runs/
+checkpoints/
+datasets/
+
+# Local secrets and environment files
+.env
+.env.*
+!.env.example
