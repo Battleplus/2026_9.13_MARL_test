@@ -1,6 +1,6 @@
 # 项目状态
 
-最后更新：2026-09-13（第一轮执行后）
+最后更新：2026-09-14（本机最小复现重跑后）
 
 ## 总体状态
 
@@ -40,3 +40,4 @@
 - Patch dry-run：`git -C upstream/MAPT apply --check patches/mapt/0001-reproducibility.patch` 通过。
 - Static：MAPT reward 核心 3 个模块 AST parse、3 个 Linux shell wrapper `bash -n` 通过。
 - Windows fallback：`results/first_round/windows_fallback_smoke.json`，Python 3.14.4、PyTorch 2.13.0+cpu、64 条 fixture、loss `2.577014 -> 0.837357`、eval `0.185735`、inference `(1,3,1)`。
+- 本机重跑：`results/first_round/windows_fallback_smoke_rerun_2026-09-14.json`，结果一致；该结果只证明最小 reward-model 链路，不包含正式 SMAC 回报或胜率。

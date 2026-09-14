@@ -14,7 +14,29 @@
 - MAPT 有官方公开仓库：[catezi/MAPT](https://github.com/catezi/MAPT)，但仓库根目录未发现许可证文件，严格来说属于“源码公开”，不能直接认定为具有明确开源许可。
 - MAPT 的代码、奖励模型、策略训练入口和 4 个示例任务脚本可见，但论文中的全任务脚本、测试、CI 和完整环境锁定信息不全。
 - 官方 README 提供的偏好数据链接在 2026-09-13 实测显示 `This address has expired`，因此数据恢复/重建是当前最大风险。
-- 当前本机为 Windows 11、约 16 GB 内存，未检测到 `nvidia-smi`。本机适合文档、静态审计和小规模单元测试；全量训练建议使用 Linux + NVIDIA GPU。
+- 当前本机为 Windows 11、约 16 GB 内存，检测到 RTX 3060 Laptop GPU（6 GB）；当前可用 Windows PyTorch 为 CPU-only fallback。本机已验证小规模闭环；全量训练建议使用 Linux + NVIDIA GPU。
+
+## 当前复现效果
+
+截至 2026-09-14，已使用公开 MAPT 仓库完成本机最小闭环验证。测试使用 64 条独立合成 preference fixture，未使用论文官方偏好数据：
+
+| 项目 | 实测结果 |
+|---|---|
+| 数据加载 | 通过；train/val = 51/13 |
+| observation | `float32`，形状 `B,T,N,obs_dim` |
+| action | `int64`，形状 `B,T,N,1` |
+| label | `1/-1/0` 正确编码为 one-hot / tie soft label |
+| trajectory | `T=4`，`N=3`，SMAC `3m` action dim = 9 |
+| reward model loss | `2.577014 → 0.837357`（2 个训练 epoch） |
+| eval loss | `0.185735` |
+| checkpoint | 保存、重新加载通过 |
+| learned reward inference | 通过，输出形状 `(1,3,1)` |
+
+完整原始 JSON 结果见
+[windows_fallback_smoke_rerun_2026-09-14.json](results/first_round/windows_fallback_smoke_rerun_2026-09-14.json)。
+该结果是 Windows Python 3.14.4 + PyTorch 2.13.0+cpu fallback 的工程链路验证，
+不是论文中基于官方数据和 SMAC 长训练得到的最终回报或胜率；正式 `3m` 结果仍待 Linux
+环境、SC2/SMAC 和数据阶段门完成。
 
 ## 复现上游与许可边界
 
