@@ -6,6 +6,10 @@
 
 **阶段：P1/P2/P3 最小闭环已完成 Windows fallback；Linux 锁定环境与 SMAC 主结果仍待执行。**
 
+复现上游：公开仓库 `https://github.com/catezi/MAPT`，submodule commit
+`0b4ef2712995681febca7631f9a27e1b0dccccbf`。许可证不明确不阻止本地使用公开仓库
+进行复现；当前仅避免把上游完整源码复制进本仓库。
+
 ## 阶段看板
 
 | 阶段 | 状态 | 完成条件 |

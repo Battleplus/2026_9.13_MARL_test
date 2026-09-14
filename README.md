@@ -16,6 +16,15 @@
 - 官方 README 提供的偏好数据链接在 2026-09-13 实测显示 `This address has expired`，因此数据恢复/重建是当前最大风险。
 - 当前本机为 Windows 11、约 16 GB 内存，未检测到 `nvidia-smi`。本机适合文档、静态审计和小规模单元测试；全量训练建议使用 Linux + NVIDIA GPU。
 
+## 复现上游与许可边界
+
+本项目直接使用公开的 [catezi/MAPT](https://github.com/catezi/MAPT) 仓库
+完成复现。上游以 Git submodule 固定在 commit
+`0b4ef2712995681febca7631f9a27e1b0dccccbf`；本仓库不复制或重新发布上游完整源码，
+而是通过 submodule、补丁、配置、wrapper 和实验证据复现其行为。上游根目录未发现
+明确 LICENSE，因此“使用公开仓库进行本地复现”和“将上游源码作为本项目源码重新发布”
+是两件不同的事：前者是本项目当前采用的方式，后者暂不进行。
+
 ## 仓库导航
 
 - [论文与代码审计](docs/00_paper_code_audit.md)
